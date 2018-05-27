@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import tweetprocessor.services.PropertiesManager;
 import tweetprocessor.userdata.TwitterUser;
 import tweetprocessor.utility.Utilities;
 
@@ -28,17 +29,19 @@ public class LoadUsersCommand {
 	public boolean execute(){
 		try{
 			// Open the file
-			br = new BufferedReader(new InputStreamReader(new FileInputStream("../TweeterProcessor/Java Source/tweetprocessor/datainput/user2.txt")));
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(PropertiesManager.getInstance().userSource)));
 	
 			String strLine;
 	
 			//Read File Line By Line
 			while ((strLine = br.readLine()) != null)   {
-			   System.out.println(strLine); //Output to console, to check the content read in line by line	
-			   	
+			   if(PropertiesManager.getInstance().debug){	
+				   System.out.println(strLine); //Output to console, to check the content read in line by line	
+			   }	
+			   
 			   String [] lineRead =  strLine.split(FOLLOWS); 
 			   
-			 //Data Input Validation, there should only be two items, Follower and Followee's
+			   //Data Input Validation, there should only be two items, Follower and Followee's
 			   if(lineRead.length > 2){
 				   System.err.println("Error encounterred reading source of data");
 				   return false;

@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import tweetprocessor.services.PropertiesManager;
 import tweetprocessor.userdata.Tweets;
 import tweetprocessor.userdata.TwitterUser;
 import tweetprocessor.utility.Utilities;
@@ -25,7 +26,7 @@ public class LoadTweetsCommand {
 	public boolean execute(){
 		try{
 			// Open the file
-			br = new BufferedReader(new InputStreamReader(new FileInputStream("../TweeterProcessor/Java Source/tweetprocessor/datainput/tweet2.txt")));
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(PropertiesManager.getInstance().tweetSource)));
 
 			String strLine;
 			Integer lineCounter = 0; //Keep track of the index of the tweet on the file
@@ -41,7 +42,9 @@ public class LoadTweetsCommand {
 				}
 				lineCounter++;
 				
-				System.out.println(user + "> " +tweet); //To output the tweets in the console
+				if(PropertiesManager.getInstance().debug){
+					System.out.println(user + "> " +tweet); //To output the tweets in the console
+				}
 				
 				TwitterUser twtUser = twitterUsers.get(user);
 				if(twtUser != null){

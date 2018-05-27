@@ -12,10 +12,11 @@ import tweetprocessor.userdata.TwitterUser;
 
 public class TweetService {
 
-	public TweetService() {
-	}
-	
 	Map<String, TwitterUser> twitterUsers = new HashMap<String, TwitterUser>();
+	
+	public TweetService() {
+		PropertiesManager.getInstance();
+	}
 	
 	public void loadUsers() throws ServiceException{
 		LoadUsersCommand usersCmd = new LoadUsersCommand();

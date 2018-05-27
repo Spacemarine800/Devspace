@@ -38,7 +38,7 @@ public class DisplayTweetsCommand {
 			   for(Tweets tweet : orderTweets){
 				   System.out.println("@"+tweet.getUserName()+": "+tweet.getTweet());
 			   }
-			   System.out.println();
+			   //System.out.println();
 			}
 			result = true;
 		}catch(Exception e){
