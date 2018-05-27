@@ -32,10 +32,13 @@ public class LoadTweetsCommand {
 
 			//Read File Line By Line
 			while ((strLine = br.readLine()) != null)   {
-				
+				//File Validation????
 				String [] lineRead =  strLine.split(GREATER_SYMBOL);
 				String user = Utilities.removeSpaces(lineRead[0].trim());
-				String tweet = lineRead[1];
+				String tweet = lineRead[1]; //Check Tweet length, not more that 140 chars
+				if(tweet.length() > 140){
+					tweet = "Tweet Unavailable";
+				}
 				lineCounter++;
 				
 				//System.out.println(user + "> " +tweet); //To output the tweets in the console

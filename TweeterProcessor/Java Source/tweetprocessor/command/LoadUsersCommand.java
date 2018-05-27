@@ -35,8 +35,14 @@ public class LoadUsersCommand {
 			//Read File Line By Line
 			while ((strLine = br.readLine()) != null)   {
 			   //System.out.println(strLine); //Output to console, to check the content read in line by line	
-				
+			   	
 			   String [] lineRead =  strLine.split(FOLLOWS); 
+			   
+			 //Data Input Validation, there should only be two items
+			   if(lineRead.length > 2){
+				   System.err.println("Error encounterred reading source of data");
+				   return false;
+			   }
 
 			   //User read
 			   String user =  Utilities.removeSpaces(lineRead[lineRead.length - 1].trim());
