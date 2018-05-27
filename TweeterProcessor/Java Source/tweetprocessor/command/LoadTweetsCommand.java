@@ -15,9 +15,6 @@ import tweetprocessor.utility.Utilities;
 
 public class LoadTweetsCommand {
 
-	public LoadTweetsCommand() {
-	}
-
 	public static final String GREATER_SYMBOL = ">";
 	
 	private BufferedReader br = null;

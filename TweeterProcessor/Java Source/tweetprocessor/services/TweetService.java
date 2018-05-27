@@ -1,17 +1,13 @@
 package tweetprocessor.services;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
+import tweetprocessor.command.DisplayTweetsCommand;
 import tweetprocessor.command.LoadTweetsCommand;
 import tweetprocessor.command.LoadUsersCommand;
-import tweetprocessor.userdata.TweetComparator;
-import tweetprocessor.userdata.Tweets;
+import tweetprocessor.exception.ExceptionCodes;
+import tweetprocessor.exception.ServiceException;
 import tweetprocessor.userdata.TwitterUser;
 
 public class TweetService {
@@ -21,39 +17,28 @@ public class TweetService {
 	
 	Map<String, TwitterUser> twitterUsers = new HashMap<String, TwitterUser>();
 	
-	public void loadUsers(){
-		LoadUsersCommand users = new LoadUsersCommand();
-		users.execute();
-		twitterUsers = users.getTwitterUsers();
+	public void loadUsers() throws ServiceException{
+		LoadUsersCommand usersCmd = new LoadUsersCommand();
+		if(!usersCmd.execute()){
+			throw new ServiceException(ExceptionCodes.USER_LOAD_ERROR, "Load of Twitter Users encounttered an error.");
+		}
+		twitterUsers = usersCmd.getTwitterUsers();
 	}
 	
-	public void loadTweets(){
-		LoadTweetsCommand tweets = new LoadTweetsCommand();
-		tweets.setTwitterUsers(twitterUsers);
-		tweets.execute();
-		twitterUsers = tweets.getTwitterUsers();
+	public void loadTweets() throws ServiceException{
+		LoadTweetsCommand tweetsCmd = new LoadTweetsCommand();
+		tweetsCmd.setTwitterUsers(twitterUsers);
+		if(!tweetsCmd.execute()){
+			throw new ServiceException(ExceptionCodes.TWEET_LOAD_ERROR, "Load of Twitter Tweets encounttered an error.");
+		}
+		twitterUsers = tweetsCmd.getTwitterUsers();
 	}
 	
-	public void displayUserTweets(){
-		SortedSet<String> keys = new TreeSet<String>(twitterUsers.keySet());
-		Iterator<String> twtUsers = keys.iterator();
-		
-		while(twtUsers.hasNext()){
-		   TwitterUser tUser = twitterUsers.get(twtUsers.next());
-		   
-		   ArrayList<Tweets> orderTweets = new ArrayList<Tweets>();
-		   orderTweets.addAll(tUser.getTweets());
-		   for(Map.Entry<String, ArrayList<Tweets>> followeeTweets : tUser.getFolloweeTweets().entrySet()){
-			   orderTweets.addAll(followeeTweets.getValue());
-		   }
-		   Collections.sort(orderTweets, new TweetComparator());
-		   
-		   //Display User Tweets
-		   System.out.println(tUser.getUserDisplayName());
-		   for(Tweets tweet : orderTweets){
-			   System.out.println("@"+tweet.getUserName()+": "+tweet.getTweet());
-		   }
-		   System.out.println();
+	public void displayUserTweets() throws ServiceException{
+		DisplayTweetsCommand displayCmd = new DisplayTweetsCommand();
+		displayCmd.setTwitterUsers(twitterUsers);
+		if(!displayCmd.execute()){
+			throw new ServiceException(ExceptionCodes.TWEETS_DISPLAY_ERROR, "Display Twitter Tweets encounttered an error.");
 		}
 	}
 

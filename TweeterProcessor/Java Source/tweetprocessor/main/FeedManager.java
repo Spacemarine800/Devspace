@@ -1,5 +1,6 @@
 package tweetprocessor.main;
 
+import tweetprocessor.exception.ServiceException;
 import tweetprocessor.services.TweetService;
 
 public class FeedManager {
@@ -13,12 +14,15 @@ public class FeedManager {
 		
 		TweetService twtService = new TweetService();
 		
-		twtService.loadUsers();
+		try {
+			twtService.loadUsers();
+			twtService.loadTweets();
+			twtService.displayUserTweets();
+		} catch (ServiceException e) {
+			e.printStackTrace();
+			result = false;
+		}
 		
-		twtService.loadTweets();
-		
-		twtService.displayUserTweets();
-
 		return result;
 	}
 	
