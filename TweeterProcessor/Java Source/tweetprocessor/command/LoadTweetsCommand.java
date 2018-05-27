@@ -25,7 +25,7 @@ public class LoadTweetsCommand {
 	public boolean execute(){
 		try{
 			// Open the file
-			br = new BufferedReader(new InputStreamReader(new FileInputStream("../TweeterProcessor/Java Source/tweetprocessor/datainput/tweet.txt")));
+			br = new BufferedReader(new InputStreamReader(new FileInputStream("../TweeterProcessor/Java Source/tweetprocessor/datainput/tweet2.txt")));
 
 			String strLine;
 			Integer lineCounter = 0; //Keep track of the index of the tweet on the file
@@ -41,7 +41,7 @@ public class LoadTweetsCommand {
 				}
 				lineCounter++;
 				
-				//System.out.println(user + "> " +tweet); //To output the tweets in the console
+				System.out.println(user + "> " +tweet); //To output the tweets in the console
 				
 				TwitterUser twtUser = twitterUsers.get(user);
 				if(twtUser != null){

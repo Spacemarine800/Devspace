@@ -3,3 +3,6 @@ Alan follows Martin
 Ward follows Martin, Alan
 Martin follows Ward
 Fred follows Ward, Alex
+Sally follows Ward
+Kate follows Sally, Martin, Ward, Alan
+Alan follows Kate

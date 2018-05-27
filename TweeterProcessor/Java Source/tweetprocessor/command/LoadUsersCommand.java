@@ -28,26 +28,27 @@ public class LoadUsersCommand {
 	public boolean execute(){
 		try{
 			// Open the file
-			br = new BufferedReader(new InputStreamReader(new FileInputStream("../TweeterProcessor/Java Source/tweetprocessor/datainput/user.txt")));
+			br = new BufferedReader(new InputStreamReader(new FileInputStream("../TweeterProcessor/Java Source/tweetprocessor/datainput/user2.txt")));
 	
 			String strLine;
 	
 			//Read File Line By Line
 			while ((strLine = br.readLine()) != null)   {
-			   //System.out.println(strLine); //Output to console, to check the content read in line by line	
+			   System.out.println(strLine); //Output to console, to check the content read in line by line	
 			   	
 			   String [] lineRead =  strLine.split(FOLLOWS); 
 			   
-			 //Data Input Validation, there should only be two items
+			 //Data Input Validation, there should only be two items, Follower and Followee's
 			   if(lineRead.length > 2){
 				   System.err.println("Error encounterred reading source of data");
 				   return false;
 			   }
 
-			   //User read
+			   //User read, the Followee
 			   String user =  Utilities.removeSpaces(lineRead[lineRead.length - 1].trim());
 			   
 			   StringTokenizer st = new StringTokenizer(user, ",");
+			   usersOnReadLine = new ArrayList<String>();
 			   if(st.countTokens() > 1){
 				   //Multiple Users being followed
 				   while(st.hasMoreTokens()){
@@ -63,7 +64,7 @@ public class LoadUsersCommand {
 			   TwitterUser fwUser = new TwitterUser();
 			   fwUser.setUserDisplayName(userFollower);
 			   
-			   if(!twitterUsers.containsKey(userFollower)){
+			   if(twitterUsers != null && !twitterUsers.containsKey(userFollower)){
 				   twitterUsers.put(userFollower, fwUser);
 			   } 	   
 			   
@@ -100,7 +101,6 @@ public class LoadUsersCommand {
 
 	public void storeUser(StringTokenizer token){
 		String userName = "";
-		usersOnReadLine = new ArrayList<String>();
 		userName = token.nextToken();
 		usersOnReadLine.add(userName);
 		TwitterUser twUser = new TwitterUser();

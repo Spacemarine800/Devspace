@@ -4,3 +4,5 @@ Alan> Random numbers should not be generated with a method chosen at random.
 Fred> Got a new car.
 Alex> Congrats to me.
 Martin> Ice cubes are cool.
+Kate> Its Friday!
+Sally> Got the flu
