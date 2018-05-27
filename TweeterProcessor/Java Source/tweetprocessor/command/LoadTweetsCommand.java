@@ -38,7 +38,7 @@ public class LoadTweetsCommand {
 				String tweet = lineRead[1];
 				lineCounter++;
 				
-				System.out.println(user + "> " +tweet);
+				//System.out.println(user + "> " +tweet); //To output the tweets in the console
 				
 				TwitterUser twtUser = twitterUsers.get(user);
 				if(twtUser != null){

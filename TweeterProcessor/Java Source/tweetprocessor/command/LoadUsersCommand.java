@@ -34,7 +34,7 @@ public class LoadUsersCommand {
 	
 			//Read File Line By Line
 			while ((strLine = br.readLine()) != null)   {
-			   //System.out.println(strLine); //To check the content read in line by line	
+			   //System.out.println(strLine); //Output to console, to check the content read in line by line	
 				
 			   String [] lineRead =  strLine.split(FOLLOWS); 
 
