@@ -33,7 +33,12 @@ public class PropertiesManager {
 			sourceVersion = props.getProperty("SOURCE_VERSION");
 		} 
 		catch(Exception e){
-			System.err.println("Error loading properties");
+			System.err.println("Loading defaults properties");
+			userSource = "../TweeterProcessor/Java Source/tweetprocessor/datainput/user.txt";
+			tweetSource = "../TweeterProcessor/Java Source/tweetprocessor/datainput/tweet.txt";
+			format = ".txt";
+			debug = false;
+			sourceVersion = ""; 
 		}	 
 	 }
 	
