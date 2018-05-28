@@ -8,8 +8,6 @@ public class FeedManager {
 	public FeedManager() {
 	}
 
-	private boolean result = true;
-	
 	public boolean execute(){
 		
 		TweetService twtService = new TweetService();
@@ -20,10 +18,10 @@ public class FeedManager {
 			twtService.displayUserTweets();
 		} catch (ServiceException e) {
 			e.printStackTrace();
-			result = false;
+			return false;
 		}
 		
-		return result;
+		return true;
 	}
 	
 }
