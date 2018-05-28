@@ -11,7 +11,7 @@ Assumptions
 - The data can be read from a file or database.
 - Usernames are unique. 
 - Data is always well-formed. 
-- A user will not follow anther user more than once. 
+- A user will not follow another user more than once. 
 - Users will not follow themselves. 
 
 Instructions to Run
