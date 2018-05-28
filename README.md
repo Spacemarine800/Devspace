@@ -19,6 +19,7 @@ Instructions to Run
 - Unzip to your directory of choice
 - In your IDE of choice, I will use Eclipse, import the project into your workspace
 - Right click TweeterProcessor project -> Run As -> Java Application
+- You will be prompted to select a class, Select FeedReader that is located under tweetprocessor.main
 - View Console for required output
  
 Notes about the Program design
