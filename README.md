@@ -15,7 +15,7 @@ Assumptions
  - Users will not follow themselves. 
 
 Instructions to Run
- - Download Zip of given source code of TweetProcessor
+ - Download Zip of given source code of TweeterProcessor
  - Unzip to your directory of choice
  - In your IDE of choice, I will use Eclipse, import the project into your workspace
  - Right click TweeterProcessor project -> Run As -> Java Application
