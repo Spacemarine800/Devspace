@@ -29,9 +29,6 @@
  
 ## Notes about the Program design
 - **FeedReader** is the entry point for the program, contains the main(String[]...)
-- Designed around a service layer pattern, each service method that invokes a single command class that execute one specific              function.
-- This allows the reuse of the services and testing each function.
-- The command layer allows it to be modified to read from a database if needed or an external source.
 - The program is driven by a properties file named **tweeter.properties**, this contains paths to the actual file inputs for user and tweets.
 - The additional properties control the following:
    - **FORMAT** -> File format
@@ -41,6 +38,11 @@
 - By default the **SOURCE_VERSION** is set to *blank*, so the program will process the given files *user.txt* and *tweets.txt*.
 
 - To test if the program can handle more users and tweets, I created the following additional files under **tweetprocessor.datainput**, named **user2.txt** and **tweet2.txt**. This is where the property **SOURCE_VERSION** is used, if it is set to **2**, the program will read those source files and process accordingly.
+
+- Designed around a service layer pattern, each service method that invokes a single command class that execute one specific              function.
+- This allows the reuse of the services and testing each function.
+- The command layer allows it to be modified to read from a database if needed or an external source.
+
  
  
  
