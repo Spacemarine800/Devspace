@@ -1,6 +1,6 @@
 package tweetprocessor.tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -11,9 +11,7 @@ public class JunitLoadUsers {
 	@Test
 	public void testExecute() {
 		LoadUsersCommand cmd = new LoadUsersCommand();
-		if(!cmd.execute()){
-			fail("Not yet implemented");
-		}	
+		assertTrue(cmd.execute());	
 	}
 
 }

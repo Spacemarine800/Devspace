@@ -7,7 +7,7 @@ import tweetprocessor.services.TweetService;
 import tweetprocessor.userdata.TwitterUser;
 
 
-public class LoadUserTest {
+public class LoadUserServiceTest {
 
 	public static void main(String[] args) {
 		TweetService service = new TweetService();
