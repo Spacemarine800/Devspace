@@ -30,5 +30,11 @@ Notes about the Program design
    - FORMAT -> File format
    - SOURCE_VERSION -> Numerical value that controls different input sources
    - DEBUG -> Settting this to true will allow the program to output the data read in from each file to the console to verify.
+
+- By default the SOURCE_VERSION is set to blank, so the program will process the given files user.txt and tweets.txt.
+
+- To test if the program can handle more users and tweets, I created the following additional files under tweetprocessor.datainput, named user2.txt and tweet2.txt. This is where the property SOURCE_VERSION is used, if it is set to 2, the program will read those source files and process accordingly.
+ 
+ 
  
  
