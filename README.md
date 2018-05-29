@@ -6,11 +6,11 @@
    console.
 
 ## Assumptions
-- There will more than the given users, hence solution needs to be generic.
+- There will be more than the given users, hence solution needs to be generic.
 - One to many relationship for the user to followers.
 - The data can be read from a file or database.
 - Usernames are unique. 
-- Data is always well-formed. 
+- Data is always well formed. 
 - A user will not follow another user more than once. 
 - Users will not follow themselves. 
 
